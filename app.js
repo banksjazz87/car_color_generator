@@ -9,7 +9,7 @@
 
  /* http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&year=2017&make=nissan&model=altima
   
-   http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&vin=JTDZN3EU0E3298500
+   http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&id=2016_nissan_altima_25*/
  //constant dom elements
  const year = document.getElementById('year');
  const make = document.getElementById('make');
