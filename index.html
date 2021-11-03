@@ -4,34 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="index.css" />
     <title>Car Paint Generator</title>
 </head>
 
 <body>
-  <header>
-    <h1>
-    Car Color Code Generator
-    </h1>
-  </header>
-  <div>
-    
-    <select id="year">
+    <header>
+        <h1>
+            Car Color Code Generator
+        </h1>
+    </header>
+    <div>
+
+        <select id="year">
       <option>Year</option>
     </select>
- 
-    
-    <select id="make">
+
+
+        <select id="make">
       <option>Make</option>
     </select>
-  
-    <select id="model">
+
+        <select id="model">
       <option>Model</option>
     </select>
-    
-    <button id="submit" type="submit"> Submit </button>
-    
-  </div>
+
+        <button id="submit" type="submit"> Submit </button>
+
+    </div>
+
+    <div id="license_plate">
+
+        <input placeholder="License Plate Number"></input>
+
+        <select id="state">
+        <option>State</option>
+      </select>
+
+        <button id="plate_submit" type="submit">Submit</button>
+
+    </div>
 
 </body>
 <script src="app.js"></script>

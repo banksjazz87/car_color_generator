@@ -10,6 +10,10 @@
  /* http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&year=2017&make=nissan&model=altima
   
    http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&id=2016_nissan_altima_25*/
+
+
+ //license plate call
+ // http://api.carsxe.com/platedecoder?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&plate=36619HT&state=MD&format=json
  //constant dom elements
  const year = document.getElementById('year');
  const make = document.getElementById('make');
@@ -42,6 +46,8 @@
 
  const cars = ["Toyota", "Honda", "Chevrolet", "Ford", "Mercedes-Benz", "Jeep", "BMW", "Porsche", "Subaru", "Nissan", "Cadillac", "Volkswagen", "Lexus", "Audi", "Ferrari", "Volvo", "Jaguar", "Lincoln", "Mazda", "Land Rover", "Tesla", "Ram Trucks", "Kia", "GMC", "Buick", "Acura", "Bentley", "Dodge", "Hyundai", "Chrysler", "Pontiac", "Infiniti", "Mitsubishi", "Oldsmobile", "Maserati", "Aston Martin", "Bugatti", "Fiat", "Mini", "Alfa Romeo", "Saab", "Genesis", "Suzuki", "Studebaker", "Renault", "Peugeot", "Daewoo", "Hudson", "Citroen", "MG"];
 
+ const states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+
  const makeOptions = () => {
      const sortedCars = cars.sort();
 
@@ -56,6 +62,19 @@
  }
 
  makeOptions();
+
+ const makeStateOptions = () => {
+     const parent = document.getElementById('state');
+
+     for (let i = 0; i < states.length; i++) {
+         let stateOption = document.createElement('option');
+         stateOption.textContent = states[i];
+
+         parent.appendChild(stateOption);
+     }
+ }
+
+ makeStateOptions();
 
  //fetch function 
  const carUrl = "https://vpic.nhtsa.dot.gov/api";
