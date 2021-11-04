@@ -8,6 +8,7 @@
  }
 
  const carsXeKey = "4jrklhq7m_gf7qnq5f5_oty30rgzz";
+ const carsXeUrl = "http://api.carsxe.com/";
 
  /* http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&year=2017&make=nissan&model=altima
   
@@ -87,7 +88,7 @@
 
  makeStateOptions();
 
- //fetch function 
+ //fetch function for the models
  const carUrl = "https://vpic.nhtsa.dot.gov/api";
 
  const carCall = async(year, make) => {
@@ -106,19 +107,32 @@
 
  //add models
  const newModels = () => {
-     let selectModel = document.getElementById('model');
+         let selectModel = document.getElementById('model');
 
-     //Appending the different car model names, to the model option
-     if (modelDetails.length === 0) {
-         alert("Please make sure your year and make are correct");
-     } else {
+         //Appending the different car model names, to the model option
+         if (modelDetails.length === 0) {
+             alert("Please make sure your year and make are correct");
+         } else {
 
-         for (let i = 0; i < modelDetails.length; i++) {
-             let option = document.createElement('option');
-             option.textContent = modelDetails[i].Model_Name;
+             for (let i = 0; i < modelDetails.length; i++) {
+                 let option = document.createElement('option');
+                 option.textContent = modelDetails[i].Model_Name;
 
-             selectModel.appendChild(option);
+                 selectModel.appendChild(option);
+             }
          }
+     }
+     // http://api.carsxe.com/platedecoder?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&plate=36619HT&state=MD&format=json
+
+ //Fetch Function for the data related to the plate number
+ const plateInfo = async(plateData, location, key) => {
+     const response = await fetch(carsXeUrl + "platecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json");
+
+     try {
+         let updatedResponse = response;
+         console.log(updatedResponse);
+     } catch (e) {
+         console.log('error in plateInf functon', e)
      }
  }
 
@@ -193,3 +207,15 @@
      UserInput.state = e.target.value;
      console.log("plate state has been chosen", UserInput);
  });
+
+ //This function will update the plate value in the UserInput object on keyup
+ plate.addEventListener('keyup', (e) => {
+     UserInput.plate = e.target.value;
+     console.log("the plate data has been updated", UserInput);
+ });
+
+ //This function will make an api call to get information pertaining to the plate data that was submitted
+ plateSubmit.addEventListener('click', (e) => {
+     e.preventDefault();
+     plateInfo(UserInput.plate, UserInput.state, carsXeKey);
+ })
