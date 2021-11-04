@@ -2,7 +2,9 @@
  let UserInput = {
      year: null,
      make: null,
-     model: null
+     model: null,
+     plate: null,
+     state: null
  }
 
  const carsXeKey = "4jrklhq7m_gf7qnq5f5_oty30rgzz";
@@ -15,10 +17,17 @@
  //license plate call
  // http://api.carsxe.com/platedecoder?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&plate=36619HT&state=MD&format=json
  //constant dom elements
+
+ //Elements used to submit the year, make and model
  const year = document.getElementById('year');
  const make = document.getElementById('make');
  const model = document.getElementById('model');
  const submit = document.getElementById('submit');
+
+ //Elements used to submit the license plate
+ const plate = document.getElementById('plate');
+ const state = document.getElementById('state');
+ const plateSubmit = document.getElementById('plate_submit');
 
 
  //Store car models and model information received from the first api call
@@ -48,6 +57,7 @@
 
  const states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
+ //Function to create the car options.
  const makeOptions = () => {
      const sortedCars = cars.sort();
 
@@ -63,6 +73,7 @@
 
  makeOptions();
 
+ //Function to make the State options, when submitting a license plate number.
  const makeStateOptions = () => {
      const parent = document.getElementById('state');
 
@@ -175,4 +186,10 @@
  //Handling when the user clicks on the model selection
  model.addEventListener('click', () => {
      updateDom();
+ });
+
+ //This function will update the license plate state on change
+ state.addEventListener('change', (e) => {
+     UserInput.state = e.target.value;
+     console.log("plate state has been chosen", UserInput);
  });
