@@ -129,7 +129,7 @@
      const response = await fetch(carsXeUrl + "platecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json");
 
      try {
-         let updatedResponse = await response.json();
+         let updatedResponse = response;
          console.log(updatedResponse);
      } catch (e) {
          console.log('error in plateInf functon', e)
