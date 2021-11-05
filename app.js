@@ -128,7 +128,7 @@
  const plateInfo = async(plateData, location, key) => {
      const response = await fetch(carsXeUrl + "platedecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json", {
          method: 'GET',
-         mode: 'no-cors',
+         mode: 'cors',
          cache: 'no-cache',
          credentials: 'same-origin',
          headers: {
