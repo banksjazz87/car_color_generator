@@ -126,7 +126,18 @@
 
  //Fetch Function for the data related to the plate number
  const plateInfo = async(plateData, location, key) => {
-     const response = await fetch(carsXeUrl + "platecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json");
+     const response = await fetch(carsXeUrl + "platecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json", {
+         method: 'GET',
+         mode: 'no-cors',
+         cache: 'no-cache',
+         credentials: 'same-origin',
+         headers: {
+             'Content-Type': 'application/json'
+         },
+         redirect: 'follow',
+         referrerPolicy: 'no-referrer',
+         body: JSON.stringify()
+     });
 
      try {
          let updatedResponse = response;
