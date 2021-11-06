@@ -125,7 +125,7 @@
      // http://api.carsxe.com/platedecoder?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&plate=36619HT&state=MD&format=json
 
  //Fetch Function for the data related to the plate number
- const plateInfo = async(plateData, location, key) => {
+ const plateInfo = async(plateData, location, key, data = {}) => {
      const response = await fetch(carsXeUrl + "platedecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json", {
          method: 'GET',
          mode: 'cors',
@@ -135,12 +135,11 @@
              'Content-Type': 'application/json'
          },
          redirect: 'follow',
-         referrerPolicy: 'no-referrer',
-         body: JSON.stringify()
+         referrerPolicy: 'same-origin'
      });
 
      try {
-         let updatedResponse = await response.json();
+         let updatedResponse = response;
          console.log(updatedResponse);
          return updatedResponse;
      } catch (e) {
