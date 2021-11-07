@@ -7,9 +7,6 @@
      state: null
  }
 
- const carsXeKey = "4jrklhq7m_gf7qnq5f5_oty30rgzz";
- const carsXeUrl = "http://api.carsxe.com/";
- const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 
  /* http://api.carsxe.com/specs?key=4jrklhq7m_gf7qnq5f5_oty30rgzz&year=2017&make=nissan&model=altima
   
@@ -128,29 +125,6 @@
  //Fetch Function for the data related to the plate number
  const plateInfo = async(plateData, location, key) => {
      const response = await fetch(corsAnywhere + carsXeUrl + "platedecoder?key=" + key + "&plate=" + plateData + "&state=" + location + "&format=json");
-
-     /*{
-         method: 'GET',
-         mode: 'cors',
-         cache: 'no-cache',
-         credentials: 'include',
-         headers: {
-             "Access-Control-Allow-Origin": carsXeUrl,
-         },
-         redirect: 'follow',
-         referrerPolicy: 'same-origin'
-     });*/
-     /*, {
-         method: 'GET',
-         mode: 'no-cors',
-         cache: 'no-cache',
-         credentials: 'include',
-         headers: {
-             'Content-Type': 'application/json'
-         },
-         redirect: 'follow',
-         referrerPolicy: 'same-origin'
-     });*/
 
      try {
          let updatedResponse = await response.json();
